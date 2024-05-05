@@ -26,7 +26,7 @@ public class AppointmentResource {
 //            throw new NotFoundException("Appointment with ID " + id + " not found");
             return Response.status(Response.Status.NOT_FOUND).entity("Appointment not found").build();
         }
-        return Response.status(Response.Status.OK).entity(appointment).build();
+        return Response.ok(appointment).build();
     }
 
     @POST

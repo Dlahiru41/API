@@ -22,19 +22,10 @@ public class AppointmentDao {
     }
 
     public Response createAppointment(Appointment appointment) {
-        // Check if the doctor with the specified ID exists
-        if (!DoctorDao.doctorDatabase.containsKey(appointment.getDoctorId())) {
-            return Response.status(Response.Status.NOT_FOUND).entity("Doctor not found").build();
-//            throw new NotFoundException("Doctor with ID " + appointment.getDoctorId() + " not found");
+        if(appointment == null) {
+            throw new IllegalArgumentException("Appointment cannot be null");
         }
-
-        // Check if the patient with the specified ID exists
-        if (!PatientDao.patientDatabase.containsKey(appointment.getPatientId())) {
-            return Response.status(Response.Status.NOT_FOUND).entity("Patient not found").build();
-//            throw new NotFoundException("Patient with ID " + appointment.getPatientId() + " not found");
-        }
-
-        // If both doctor and patient exist, proceed with creating the appointment
+        appointment.setId(idCounter++);
         appointmentMap.put(appointment.getId(), appointment);
         return Response.status(Response.Status.CREATED).entity(appointment).build();
     }

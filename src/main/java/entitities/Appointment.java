@@ -12,6 +12,16 @@ public class Appointment {
         return patient;
     }
 
+    public Appointment() {
+    }
+
+    public Appointment(int id, Date dateTime, Patient patient, Doctor doctor) {
+        this.id = id;
+        this.dateTime = dateTime;
+        this.patient = patient;
+        this.doctor = doctor;
+    }
+
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
